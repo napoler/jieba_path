@@ -25,7 +25,7 @@ class Jpath:
 
     # 读取文件并且进行结巴分词处理
 
-    def jieba_file(self, path, type='txt'):
+    def jieba_file(self, path):
         fileObject = open(path+".jieba", 'w')
         text = ''
         raw_text = open(path, errors='ignore',
