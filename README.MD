@@ -26,7 +26,12 @@ jpath.jieba_file('./data/001.txt')
 jpath.file_List('./data/', 'txt')
 #获取目录下的jieba文件列表
 jpath.file_List('./data/', 'jiaba可')
+
+
 ```
+open_file()
+
+
 
 pip install -r requirements.txt
 

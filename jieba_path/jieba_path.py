@@ -25,12 +25,12 @@ class Jpath:
     # 读取文件并且进行结巴分词处理
 
     def jieba_file(self, path):
-        fileObject = open(path+".jieba", 'w')
+        fileObject = open(path+".jieba", 'w', encoding='utf-8')
         text = ''
         # raw_text = open(path, errors='ignore',
         #                 encoding='utf-8').read() + '\n\n'  # 读入文件
         raw_text = open(path, errors='ignore',
-                        encoding='GB18030').read()+'\n\n'  # 读入文件
+                        encoding='utf-8').read()+'\n\n'  # 读入文件
     #   for line in raw_text:
     #     print (line)
         # raw_text = self.clear(raw_text)
@@ -56,7 +56,7 @@ class Jpath:
             print(file)
 
             fileObj = open(file, errors='ignore',
-                           encoding='GB18030').read() + '\n\n'  # 读入文件
+                           encoding='utf-8').read() + '\n\n'  # 读入文件
 
             # fileObj = open(file, errors='ignore',
             #                encoding='utf-8').read()+'\n\n'  # 读入文件
