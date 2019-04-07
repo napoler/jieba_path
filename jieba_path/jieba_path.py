@@ -28,7 +28,8 @@ class Jpath:
         coding = 'utf-8_sig'
         # print('处理文件', path)
         end = path+".jieba"
-       
+        
+        print('working:',path)
         text = ''
         try :
             raw_text = self.open_file(path)
@@ -39,8 +40,8 @@ class Jpath:
         raw_text = self.clear(raw_text)
         # print(raw_text)
                 # word = jieba.cut(raw_text, cut_all=True)
-        word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
-
+        # word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
+        word = jieba.cut(raw_text)  # 使用默认模式
             #     print(word)
         for i in word:
             text = text + i + " "
@@ -67,7 +68,8 @@ class Jpath:
         # raw_text = self.clear(raw_text)
         # print(raw_text)
                 # word = jieba.cut(raw_text, cut_all=True)
-        word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
+        # word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
+        word = jieba.cut(raw_text)  # 使用默认模式
 
             #     print(word)
         for i in word:
