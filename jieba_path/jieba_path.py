@@ -114,13 +114,19 @@ class Jpath:
     # 兼容编码打开文件
 
     def open_file(self, file):
+        print('open_file',file)
         if os.path.isfile(file):
+            print('open_file 存在',file)
             try:
                 fileObj = open(file, encoding='utf-8').read()  # 读入文件
+                print('utf8',file)
             except:
                 fileObj = open(file, encoding='gbk').read()  # 读入文件
+                print('尝试gbk打开',file)
+            print('open_file 成功',file)
             return fileObj
         else:
+            print('open_file 失败',file)
             return False
     # 清理多余的换行空格等
     def clear(self, string):
