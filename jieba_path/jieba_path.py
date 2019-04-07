@@ -37,7 +37,7 @@ class Jpath:
         
         fileObject = open(end, 'w', encoding='utf-8')
         raw_text = self.clear(raw_text)
-        print(raw_text)
+        # print(raw_text)
                 # word = jieba.cut(raw_text, cut_all=True)
         word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
 
@@ -52,7 +52,33 @@ class Jpath:
         fileObject.close()
                 # raw_text.close()
 
+    def jieba_file_noclear(self, path):
+        coding = 'utf-8_sig'
+        # print('处理文件', path)
+        end = path+".jieba"
+       
+        text = ''
+        try :
+            raw_text = self.open_file(path)
+        except:
+            return False
+        
+        fileObject = open(end, 'w', encoding='utf-8')
+        # raw_text = self.clear(raw_text)
+        # print(raw_text)
+                # word = jieba.cut(raw_text, cut_all=True)
+        word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
 
+            #     print(word)
+        for i in word:
+            text = text + i + " "
+                #     fileObject.write(final)
+
+                # print(final)
+        # text = self.clear(text)
+        fileObject.write(text)
+        fileObject.close()
+                # raw_text.close()
         
 
     def jieba_path(self, path, type='txt'):
@@ -61,7 +87,11 @@ class Jpath:
 
             self.jieba_file(file)
     # 合并多个文件
+    def jieba_path_noclear(self, path, type='txt'):
+        for file in self.file_List(path, 'txt'):
+            # print(file)
 
+            self.jieba_file_noclear(file)
     def file_to_one(self, path, type='jieba', endType='end'):
         final = ''
         fileObject = open(path+'all.'+endType, 'w', encoding='utf-8')
