@@ -30,23 +30,30 @@ class Jpath:
         end = path+".jieba"
        
         text = ''
-        if raw_text = self.open_file(path):
-            fileObject = open(end, 'w', encoding='utf-8')
-            raw_text = self.clear(raw_text)
-            print(raw_text)
-            # word = jieba.cut(raw_text, cut_all=True)
-            word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
+        try :
+            raw_text = self.open_file(path)
+        except:
+            return False
+        
+        fileObject = open(end, 'w', encoding='utf-8')
+        raw_text = self.clear(raw_text)
+        print(raw_text)
+                # word = jieba.cut(raw_text, cut_all=True)
+        word = jieba.cut_for_search(raw_text, HMM=True)  # 搜索引擎模式
 
-        #     print(word)
-            for i in word:
-                text = text + i + " "
-            #     fileObject.write(final)
+            #     print(word)
+        for i in word:
+            text = text + i + " "
+                #     fileObject.write(final)
 
-            # print(final)
-            text = self.clear(text)
-            fileObject.write(text)
-            fileObject.close()
-        return False
+                # print(final)
+        text = self.clear(text)
+        fileObject.write(text)
+        fileObject.close()
+                # raw_text.close()
+
+
+        
 
     def jieba_path(self, path, type='txt'):
         for file in self.file_List(path, 'txt'):
@@ -60,7 +67,12 @@ class Jpath:
         fileObject = open(path+'all.'+endType, 'w', encoding='utf-8')
         for file in self.file_List(path, type):
             # print(file)
-            fileObj = self.open_file(file)
+            try :
+                fileObj = self.open_file(file)
+            except:
+                # return False
+                continue
+            
             # print(fileObj)
 
             final = final + fileObj + '\n'

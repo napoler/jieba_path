@@ -25,9 +25,10 @@ jpath.jieba_file('./data/001.txt')
 #获取目录下的txt文件列表
 jpath.file_List('./data/', 'txt')
 #获取目录下的jieba文件列表
-jpath.file_List('./data/', 'jiaba可')
+jpath.file_List('./data/', 'jiaba')
 
-
+#将所有处理好文档合并成一个文档
+jpath.file_to_one('./data/', type='jieba', endType='end')
 ```
 open_file()
 
