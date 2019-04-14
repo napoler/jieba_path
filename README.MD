@@ -3,7 +3,7 @@
 
 ## 安装
 ```
-pip install jieba_path
+pip install -U jieba_path
 ```
 
 
@@ -29,6 +29,10 @@ jpath.file_List('./data/', 'jiaba')
 
 #将所有处理好文档合并成一个文档
 jpath.file_to_one('./data/', type='jieba', endType='end')
+
+#分句
+jpath.cut_p( file)
+cut_p.end
 ```
 open_file()
 

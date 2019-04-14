@@ -111,6 +111,39 @@ class Jpath:
             # fileObj.close()
         fileObject.write(final)
         fileObject.close()
+
+    def cut_p(self,file):
+        final = ''
+        fileObject = open(file+'.cut_p', 'w', encoding='utf-8')
+
+        try :
+            fileObj = self.open_file(file)
+        except:
+            return False
+            # continue
+        # final = re.split('(。|！|\!|\.|？|\?)',str(fileObj))
+        # final = str(fileObj).replace('(。|！|\!|\.|？|\?)', '\n')
+
+
+        sentences = re.split('(。|！|\!|\.|？|\?|\,|\，|\：|\:|\?|，|；|：|”|“)',str(fileObj))         # 保留分割符
+        print(sentences)
+        
+        new_sents = []
+        full =''
+        for i in range(int(len(sentences)/2)):
+            sent = sentences[2*i] + sentences[2*i+1]
+            new_sents.append(sent)
+            full = full+sent+"\n"
+            
+        # print(new_sents)
+        # print(full)
+            # print(fileObj)
+
+            # final = final + fileObj + '\n'
+            # fileObj.close()
+        fileObject.write(full)
+        fileObject.close()
+        return final
     # 兼容编码打开文件
 
     def open_file(self, file):
@@ -135,7 +168,7 @@ class Jpath:
         # for line in string.readlines():
         # string = re.sub('[\n]+', '\n', string)
         string = string.replace('\n', '').replace(
-            '\n\n', '\n').replace('\r\n', '\n')
+            '\n\n', '\n').replace('\r\n', '\n').replace('   ', '\n')
         # string = string.replace('\n\n', ' ').replace('\n', '')
         string = re.sub(' +', ' ', string)
         return string
